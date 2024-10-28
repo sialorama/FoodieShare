@@ -1,3 +1,5 @@
+![logo](./imgs/foodieShareWide.png)
+
 # FoodieShare  
 
 **Projet :** Plateforme de partage de recettes en ligne  
