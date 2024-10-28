@@ -1,4 +1,4 @@
-# FoodieShare  
+![logo](./imgs/foodieShareWide.png)
 
 **Projet :** Plateforme de partage de recettes en ligne  
 **Client :** Startup fictive **FoodieShare**  
