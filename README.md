@@ -1,7 +1,5 @@
 ![logo](./imgs/foodieShareWide.png)
 
-# FoodieShare  
-
 **Projet :** Plateforme de partage de recettes en ligne  
 **Client :** Startup fictive **FoodieShare**  
 **Objectif :** Développer une application de partage de recettes permettant aux utilisateurs de soumettre, consulter, commenter et classer des recettes.  
