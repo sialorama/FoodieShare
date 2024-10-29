@@ -1,0 +1,41 @@
+version: "3.8"
+services:
+  mongo:
+    image: mongo
+    container_name: db_container
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    ports:
+      - "${MONGO_PORT}:${MONGO_PORT}"
+    volumes:
+      - mongo_data:/data/db
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    container_name: foodie-share-api
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      NODE_PORT: ${NODE_PORT}
+      MONGO_HOST: ${MONGO_HOST}
+      MONGO_PORT: ${MONGO_PORT}
+      MONGO_DATABASE: ${MONGO_DATABASE}
+      MONGO_USERNAME: ${MONGO_USERNAME}
+      MONGO_PASSWORD: ${MONGO_PASSWORD}
+    ports:
+      - "${NODE_PORT}:${NODE_PORT}"
+    depends_on:
+      - mongo
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
+
+
+volumes:
+  mongo_data:

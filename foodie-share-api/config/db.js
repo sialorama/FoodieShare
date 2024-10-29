@@ -1,5 +1,6 @@
-require('dotenv').config();
 const mongoose = require('mongoose');
+require('dotenv').config();
+
 
 // Construire l'URI MongoDB avec les variables d'environnement
 const mongoURI = `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DATABASE}?authSource=admin`;
