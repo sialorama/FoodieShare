@@ -1,5 +1,4 @@
 version: "3.8"
-
 services:
   mongo:
     image: mongo:latest
@@ -9,27 +8,36 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
     ports:
-      - 27017:${MONGO_PORT}
+      - 27017:27017
     volumes:
       - mongo-config:/data/configdb
       - mongo-data:/data/db
 
-  node:
-    image: node:alpine
-    container_name: node-app
-    user: ${NODE_USER}
-    working_dir: /home/node/app
+  api:
+    build: ./foodie-share-api
+    container_name: foodie-share-api
     environment:
-      - NODE_ENV=${NODE_ENV}
+      - NODE_ENV=development
     ports:
-      - 3000:${NODE_PORT}
-    command: "node server.js"
-    volumes:
-      - ./:/home/node/app
+      - 3000:3000
     depends_on:
       - mongo
     env_file:
       - .env
+    volumes:
+      - ./foodie-share-api:/app
+
+  front:
+    build: ./foodie-share-front
+    container_name: foodie-share-front
+    environment:
+      - VITE_API_URL=http://localhost:3000
+    ports:
+      - 5173:5173
+    volumes:
+      - ./foodie-share-front:/app
+    depends_on:
+      - api
 
 volumes:
   mongo-config:
