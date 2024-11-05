@@ -1,0 +1,12 @@
+Docker commands:
+
+docker-compose up --build -d
+docker ps  -a
+docker rm <containerId>
+
+
+Ports commands:
+
+netstat -aon | findstr :3000
+taskkill /PID <PID> /F
+

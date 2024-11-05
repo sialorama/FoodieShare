@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api/recipes', recipeRoutes);
+app.use('/recipes', recipeRoutes);
 
 // Lancer le serveur
 const PORT = process.env.NODE_PORT || 5000;

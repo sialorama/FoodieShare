@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Recipe = require('./Recipe'); // Assurez-vous que le chemin est correct
+const Recipe = require('./Recipes'); // Assurez-vous que le chemin est correct
 
 // Remplacez par votre URI MongoDB
 const mongoURI = 'mongodb://localhost:27017/foodieshare'; 

@@ -17,7 +17,7 @@ function Home() {
             <ul>
                 {recipes.map(recipe => (
                     <li key={recipe._id}>
-                        <Link to={`/recipe/${recipe._id}`}>{recipe.title}</Link>
+                        <Link to={`/recipes/${recipe._id}`}>{recipe.title}</Link>
                     </li>
                 ))}
             </ul>
