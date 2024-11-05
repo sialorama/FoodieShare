@@ -1,5 +1,5 @@
 // pages/Recipes.jsx
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -12,10 +12,10 @@ const RecipesList = () => {
         const fetchRecipes = async () => {
             try {
                 // Remplacez l'URL par celle de votre API
-                const response = await axios.get('http://localhost:3000/api/recipes'); // Modifiez ce chemin si nécessaire
+                const response = await axios.get('http://localhost:3000/recipes'); // Modifiez ce chemin si nécessaire
                 setRecipes(response.data);
-            } catch (err) {
-                setError('Erreur lors de la récupération des recettes.');
+            } catch (error) {
+                setError(error, 'Erreur lors de la récupération des recettes.');
             } finally {
                 setLoading(false);
             }

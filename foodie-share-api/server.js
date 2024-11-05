@@ -1,6 +1,8 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const recipeRoutes = require('./routes/recipes');
+const userRoutes = require('./routes/user.js
+    ')
 const cors = require('cors');
 
 const app = express();
@@ -14,6 +16,7 @@ app.use(express.json());
 
 // Routes
 app.use('/recipes', recipeRoutes);
+app.use('/users', userRoutes);
 
 // Lancer le serveur
 const PORT = process.env.NODE_PORT || 5000;
