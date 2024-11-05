@@ -21,7 +21,7 @@ function Register() {
             <input type="text" placeholder="Nom" value={name} onChange={(e) => setName(e.target.value)} required />
             <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             <input type="password" placeholder="Mot de passe" value={password} onChange={(e) => setPassword(e.target.value)} required />
-            <button type="submit">S'inscrire</button>
+            <button type="submit">S&apos;inscrire</button>
         </form>
     );
 }

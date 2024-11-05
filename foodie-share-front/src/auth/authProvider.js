@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types'
 import AuthContext from './authContext';
 
 function AuthProvider({ children }) {
@@ -27,5 +28,10 @@ function AuthProvider({ children }) {
         </AuthContext.Provider>
     );
 }
+
+// Ajout de la validation des props
+AuthProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 
 export default AuthProvider;
