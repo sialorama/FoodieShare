@@ -1,31 +1,38 @@
-import { useState, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import AuthContext from '../auth/authContext';
 import axios from 'axios';
 
 function UserProfile() {
-    const [user, setUser] = useState(null);
-    const [userRecipes, setUserRecipes] = useState([]);
+    const { user } = useContext(AuthContext);
+    const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
-        // Remplace `userId` par l'identifiant de l'utilisateur connecté
-        const userId = 'user-id-exemple';
+        const fetchUserRecipes = async () => {
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/recipes/user/${user.userId}`, {
+                    headers: {
+                        Authorization: `Bearer ${user.token}` // Inclure le token JWT dans l'en-tête
+                    }
+                });
+                setRecipes(response.data);
+            } catch (error) {
+                console.error('Erreur lors du chargement des recettes de l\'utilisateur:', error);
+            }
+        };
 
-        axios.get(`${import.meta.env.VITE_API_URL}/users/${userId}`)
-            .then(response => {
-                setUser(response.data.user);
-                setUserRecipes(response.data.recipes);
-            })
-            .catch(error => console.error('Erreur lors du chargement du profil utilisateur:', error));
-    }, []);
-
-    if (!user) return <p>Chargement du profil...</p>;
+        if (user) {
+            fetchUserRecipes();
+        }
+    }, [user]);
 
     return (
         <div>
-            <h1>Profil de {user.name}</h1>
-            <p>Email : {user.email}</p>
-            <h2>Mes Recettes</h2>
+            <h1>User Profile</h1>
+            <p>Name: {user.name}</p>
+            <p>Email: {user.email}</p>
+            <h2>Your Recipes</h2>
             <ul>
-                {userRecipes.map(recipe => (
+                {recipes.map(recipe => (
                     <li key={recipe._id}>{recipe.title}</li>
                 ))}
             </ul>

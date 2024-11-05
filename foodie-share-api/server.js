@@ -1,8 +1,7 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const recipeRoutes = require('./routes/recipes');
-const userRoutes = require('./routes/user.js
-    ')
+const userRoutes = require('./routes/users.js')
 const cors = require('cors');
 
 const app = express();

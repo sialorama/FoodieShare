@@ -1,52 +1,51 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import AuthContext from '../auth/authContext';
 
 function SubmitRecipe() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState('');
-    const [instructions, setInstructions] = useState('');
+    const [steps, setSteps] = useState('');
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const newRecipe = {
-            title,
-            description,
-            ingredients: ingredients.split('\n'),
-            instructions: instructions.split('\n')
-        };
-
-        axios.post(`${import.meta.env.VITE_API_URL}/recipes`, newRecipe)
-            .then(response => {
-                console.log('Recette ajoutée:', response.data);
-                // Réinitialiser le formulaire
-                setTitle('');
-                setDescription('');
-                setIngredients('');
-                setInstructions('');
-            })
-            .catch(error => console.error('Erreur lors de l\'ajout de la recette:', error));
+        if (!user) {
+            alert('Vous devez être connecté pour soumettre une recette.');
+            return;
+        }
+        try {
+            const newRecipe = {
+                title,
+                description,
+                ingredients: ingredients.split(',').map(ingredient => ingredient.trim()),
+                steps: steps.split('.').map(step => step.trim()).filter(step => step),
+                userId: user.userId, // Assurez-vous d'ajouter l'ID de l'utilisateur
+            };
+            await axios.post(`${import.meta.env.VITE_API_URL}/recipes`, newRecipe, {
+                headers: {
+                    Authorization: `Bearer ${user.token}` // Inclure le token JWT dans l'en-tête
+                }
+            });
+            navigate('/recipes');
+        } catch (error) {
+            console.error('Erreur lors de la soumission de la recette:', error);
+        }
     };
 
     return (
-        <div>
-            <h1>Soumettre une Nouvelle Recette</h1>
-            <form onSubmit={handleSubmit}>
-                <label>Titre:</label>
-                <input value={title} onChange={(e) => setTitle(e.target.value)} required />
-
-                <label>Description:</label>
-                <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
-
-                <label>Ingrédients (un par ligne):</label>
-                <textarea value={ingredients} onChange={(e) => setIngredients(e.target.value)} required />
-
-                <label>Instructions (une par ligne):</label>
-                <textarea value={instructions} onChange={(e) => setInstructions(e.target.value)} required />
-
-                <button type="submit">Soumettre</button>
-            </form>
-        </div>
+        <form onSubmit={handleSubmit}>
+            <h2>Submit a Recipe</h2>
+            <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+            <textarea placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
+            <input type="text" placeholder="Ingredients (separated by commas)" value={ingredients} onChange={(e) => setIngredients(e.target.value)} required />
+            <input type="text" placeholder="Steps (separated by periods)" value={steps} onChange={(e) => setSteps(e.target.value)} required />
+            <button type="submit">Submit Recipe</button>
+        </form>
     );
 }
 

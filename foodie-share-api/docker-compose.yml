@@ -29,12 +29,13 @@ services:
       MONGO_PASSWORD: ${MONGO_PASSWORD}
     ports:
       - "${NODE_PORT}:${NODE_PORT}"
+    command: npm run dev  # Utilise nodemon pour le développement
     depends_on:
       - mongo
     env_file:
       - .env
     volumes:
-      - .:/usr/src/app
+      - .:/usr/src/app # Monte le répertoire courant dans le conteneur
 
 
 volumes:

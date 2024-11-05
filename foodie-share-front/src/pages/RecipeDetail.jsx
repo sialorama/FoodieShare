@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function RecipeDetail() {
@@ -26,11 +26,10 @@ function RecipeDetail() {
             </ul>
             <h2>Instructions</h2>
             <ol>
-                {recipe.instructions.map((step, index) => (
+                {recipe.steps.map((step, index) => (
                     <li key={index}>{step}</li>
                 ))}
             </ol>
-            {/* Ajout de la section commentaires à l'avenir */}
         </div>
     );
 }
