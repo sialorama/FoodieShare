@@ -1,4 +1,4 @@
-import { BrowserRouter as Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -14,7 +14,7 @@ import AuthProvider from './auth/authProvider';
 function App() {
     return (
         <AuthProvider>
-
+                <Router>
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<Home />} />
@@ -34,7 +34,7 @@ function App() {
                     } />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
-
+                </Router>
         </AuthProvider>
     );
 }
