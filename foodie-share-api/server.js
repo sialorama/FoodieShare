@@ -16,5 +16,5 @@ app.use(express.json());
 app.use('/api/recipes', recipeRoutes);
 
 // Lancer le serveur
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.NODE_PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
