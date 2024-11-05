@@ -3,19 +3,16 @@ const Recipe = require('../models/recipe');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-
-// Récupérer le profile de l'utilisateur
+// Récupérer le profil de l'utilisateur
 exports.getUserProfile = async (req, res) => {
     try {
-        const userId = req.userId; // Utiliser l'ID de l'utilisateur du token JWT
+        const userId = req.userId; // Utiliser l'ID de l'utilisateur depuis le token JWT
 
-        // Trouver l'utilisateur par ID sans mot de passe
         const user = await User.findById(userId).select('-password');
         if (!user) {
             return res.status(404).json({ message: 'Utilisateur non trouvé' });
         }
 
-        // Trouver les recettes associées à l'utilisateur
         const recipes = await Recipe.find({ userId });
 
         res.json({ user, recipes });
@@ -25,7 +22,7 @@ exports.getUserProfile = async (req, res) => {
     }
 };
 
-// Fonction pour l'inscription
+// Inscription de l'utilisateur
 exports.registerUser = async (req, res) => {
     const { name, email, password } = req.body;
     try {
@@ -34,9 +31,7 @@ exports.registerUser = async (req, res) => {
             return res.status(400).json({ message: 'Email déjà utilisé' });
         }
 
-        // Hashage du mot de passe
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({ name, email, password: hashedPassword });
+        const newUser = new User({ name, email, password });
         await newUser.save();
         res.status(201).json({ message: 'Utilisateur créé avec succès' });
     } catch (error) {
@@ -45,8 +40,7 @@ exports.registerUser = async (req, res) => {
     }
 };
 
-
-// Fonction pour la connexion
+// Connexion de l'utilisateur
 exports.loginUser = async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -55,12 +49,12 @@ exports.loginUser = async (req, res) => {
             return res.status(401).json({ message: 'Utilisateur non trouvé' });
         }
 
+        // Assurez-vous que 'comparePassword' est une méthode du modèle User, ou utilisez bcrypt directement
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(401).json({ message: 'Mot de passe incorrect' });
         }
 
-        // Générer un token JWT
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.json({ token, userId: user._id, name: user.name });
     } catch (error) {

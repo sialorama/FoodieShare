@@ -14,7 +14,7 @@ import AuthProvider from './auth/authProvider';
 function App() {
     return (
         <AuthProvider>
-            <Router>
+
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<Home />} />
@@ -34,7 +34,7 @@ function App() {
                     } />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
-            </Router>
+
         </AuthProvider>
     );
 }
