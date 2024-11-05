@@ -49,11 +49,17 @@ exports.loginUser = async (req, res) => {
             return res.status(401).json({ message: 'Utilisateur non trouvé' });
         }
 
-        // Assurez-vous que 'comparePassword' est une méthode du modèle User, ou utilisez bcrypt directement
+        // Log pour vérifier le mot de passe
+        console.log('Mot de passe entré:', password);
+        console.log('Mot de passe dans la base de données:', user.password);
+
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(401).json({ message: 'Mot de passe incorrect' });
         }
+
+        // Log de la clé secrète (à retirer en production)
+        console.log('Clé secrète utilisée:', process.env.JWT_SECRET);
 
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.json({ token, userId: user._id, name: user.name });
