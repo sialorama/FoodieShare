@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from '../auth/authContext';
@@ -23,7 +24,7 @@ function Login() {
     };
 
     return (
-        <div>
+        <div className="auth-form">
             <form onSubmit={handleSubmit}>
                 <h2>Connexion</h2>
                 {error && <p style={{ color: 'red' }}>{error}</p>}

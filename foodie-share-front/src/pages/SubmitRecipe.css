@@ -18,7 +18,7 @@
   .submit-recipe input, .submit-recipe textarea {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 10px 10;
     border: 1px solid #ddd;
     border-radius: 5px;
   }
@@ -38,3 +38,8 @@
     background-color: #2980b9;
   }
   
+  .body-img {
+    width: 580px;
+    height: 150px;
+    padding: 10px;
+}

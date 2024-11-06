@@ -1,8 +1,13 @@
+import './Home.css';
+import logo from '../imgs/recettes.webp'
+
 function Home() {
     return (
-        <div>
-            <h1>Bienvenue sur FoodieShare!</h1>
-            <p>Découvre et partage de délcieuses recettes.</p>
+        <div className="home">
+            <h1 className="home-title">Bienvenue sur FoodieShare</h1>
+            <p className="home-description">Découvre et partage de délcieuses recettes !</p>
+            <img src={logo} alt="FoodieShare" />
+
         </div>
     );
 }

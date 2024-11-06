@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import './Recipes.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import logo from '../imgs/cookbook.webp';
 
 function Recipes() {
     const [recipes, setRecipes] = useState([]);
@@ -12,7 +14,7 @@ function Recipes() {
     }, []);
 
     return (
-        <div>
+        <div className="recipes">
             <h1>Recipes</h1>
             <ul>
                 {recipes.map(recipe => (
@@ -20,6 +22,9 @@ function Recipes() {
                         <Link to={`/recipes/${recipe._id}`}>{recipe.title}</Link>
                     </li>
                 ))}
+            </ul>
+            <ul>
+            <img src={logo} alt="Cookbook" />
             </ul>
         </div>
     );
