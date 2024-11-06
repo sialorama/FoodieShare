@@ -1,4 +1,4 @@
-![logo](./imgs/foodieShareWide.png)
+![logo](./foodie-share-front\src\imgs\foodieShareWide.png)
 
 **Projet :** Plateforme de partage de recettes en ligne  
 **Client :** Startup fictive **FoodieShare**  

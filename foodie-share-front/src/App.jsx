@@ -10,6 +10,7 @@ import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import AuthProvider from './auth/authProvider';
+import Footer from './components/Footer';
 
 function App() {
     return (
@@ -34,6 +35,7 @@ function App() {
                     } />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
+                <Footer />
                 </Router>
         </AuthProvider>
     );

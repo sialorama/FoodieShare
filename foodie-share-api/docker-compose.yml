@@ -12,6 +12,8 @@ services:
       - "${MONGO_PORT}:${MONGO_PORT}"
     volumes:
       - mongo_data:/data/db
+    networks:
+      - foodie-net  # Attache le service mongo au réseau
 
   app:
     build:
@@ -36,7 +38,10 @@ services:
       - .env
     volumes:
       - .:/usr/src/app # Monte le répertoire courant dans le conteneur
-
-
+    networks:
+      - foodie-net   # Attache le service app au réseau
 volumes:
   mongo_data:
+
+networks:
+  foodie-net:  # Déclare le réseau foodie-net

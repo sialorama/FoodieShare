@@ -15,4 +15,4 @@ COPY . .
 EXPOSE ${NODE_PORT}
 
 # Commande pour démarrer l'application
-CMD ["npm", "start"]
+CMD ["nodemon", "server.js"]
