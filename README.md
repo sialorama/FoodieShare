@@ -15,3 +15,27 @@ L'application doit inclure une interface utilisateur conviviale et un système d
   
 L’application doit favoriser l'interaction et la communauté autour de la cuisine en ligne.
 La solution doit être moderne, réactive et simple d’utilisation.  
+
+## Tester l'ajout de recette avec postman:
+
+```plaintext
+```JSON
+{
+ "title": "Gâteau au chocolat",
+    "description": "Un gâteau riche et moelleux au chocolat.",
+    "ingredients": ["Farine", "Cacao en poudre", "Sucre", "Beurre", "Œufs"],
+    "steps": [
+      "Préchauffer le four à 180°C.",
+      "Mélanger les ingrédients secs dans un bol.",
+      "Ajouter le beurre fondu et les œufs, et bien mélanger.",
+      "Verser dans un moule et cuire au four pendant 30 minutes.",
+      "Laisser refroidir avant de servir."
+  ],
+  "author": "672c971a6ea3fa6500f11589"  // Remplacez ceci par l'ID réel de l'utilisateur créé
+}
+```
+```
+
+```plaintext
+
+```
