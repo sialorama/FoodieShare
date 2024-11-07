@@ -23,37 +23,37 @@ Postman (facultatif, pour tester l'API)
 
 ## Installation  
 Cloner le projet :  
-
 ```plaintext
 git clone https://github.com/username/FoodieShare.git
 cd FoodieShare
-Installer les dépendances du backend :
 ```
+Installer les dépendances du backend :  
 ```plaintext
-cd backend
+cd foodie-share-api
 npm install
-Configurer les variables d'environnement :
 ```
+Configurer les variables d'environnement :
+
 Créez un fichier .env dans le répertoire backend et ajoutez les variables d'environnement suivantes :  
 ```plaintext
-env
+env:  
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/foodie_share
-JWT_SECRET=votre_secret_pour_jwt
+JWT_SECRET=<votre_secret_pour_jwt> (example: e6a8b7c8e3bb41d1a4a22cba9f8301f7d75edb2cf8a2a20a111b10b0e9ecb1e9b7f1d25419f40d6db8f0191ecbba7382)
 ```
-## Démarrer le backend :
+### Démarrer le backend :
 ```plaintext
 npm start
-Installer les dépendances du frontend :
 ```
+### Installer les dépendances du frontend :
 Aller dans le répertoire frontend :
 ```plaintext
-cd ../frontend
+cd ../foodie-share-front
 npm install
 ```
-## Démarrer le frontend :
+### Démarrer le frontend :
 ```plaintext
-npm run dev
+npm start
 ```
 
 ## Utilisation  
@@ -89,15 +89,14 @@ GET /recipes/user/:userId : Récupère toutes les recettes d'un utilisateur
 Démarrer le serveur :
 
 bash
-Copier le code
 npm start
 
 ## Démarrer le serveur en mode développement :  
 
 bash  
-Copier le code  
 npm run dev  
-Contribution  
+
+## Contribution  
 Les contributions sont les bienvenues ! Veuillez ouvrir une issue avant de soumettre une pull request pour discuter des changements proposés.  
   
 ## Licence  
