@@ -1,5 +1,33 @@
 const Recipe = require('../models/recipe');
 
+// Ajouter une recette
+exports.createRecipe = async (req, res) => {
+    console.log(req.body);  // Vérifier les données reçues
+
+    const { title, description, ingredients, steps, author } = req.body;
+
+    // Validation des champs
+    if (!title || !description || !ingredients || !steps || !author) {
+        return res.status(400).json({ message: 'Tous les champs sont requis.' });
+    }
+
+    try {
+        const newRecipe = new Recipe({
+            title,
+            description,
+            ingredients,
+            steps,
+            author
+        });
+
+        await newRecipe.save();
+        res.status(201).json(newRecipe);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erreur lors de la création de la recette' });
+    }
+};
+
 // Afficher toutes les recettes
 exports.getAllRecipes = async (req, res) => {
     try {
@@ -10,11 +38,11 @@ exports.getAllRecipes = async (req, res) => {
     }
 };
 
-// Afficher une recette avec l'lid
+// Afficher une recette avec l'id
 exports.getRecipeById = async (req, res) => {
     try {
         const { id } = req.params;
-        const recipe = await Recipe.findById(id); // Recherche de la recette par ID
+        const recipe = await Recipe.findById(id);
         if (!recipe) {
             return res.status(404).json({ message: 'Recette non trouvée' });
         }
@@ -25,23 +53,11 @@ exports.getRecipeById = async (req, res) => {
     }
 };
 
-// Ajouter une recette
-exports.createRecipe = async (req, res) => {
-    try {
-        const newRecipe = new Recipe(req.body);
-        await newRecipe.save();
-        res.status(201).json(newRecipe);
-    } catch (error) {
-        res.status(500).json({ message: 'Erreur lors de la création de la recette' });
-    }
-};
-
-
 // Supprimer une recette avec l'id
 exports.deleteRecipeById = async (req, res) => {
     try {
         const { id } = req.params;
-        const deletedRecipe = await Recipe.findByIdAndDelete(id); // Suppression de la recette par ID
+        const deletedRecipe = await Recipe.findByIdAndDelete(id);
         if (!deletedRecipe) {
             return res.status(404).json({ message: 'Recette non trouvée' });
         }
@@ -52,3 +68,14 @@ exports.deleteRecipeById = async (req, res) => {
     }
 };
 
+// Récupérer les recettes d'un utilisateur spécifique
+exports.getRecipesByUser = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const recipes = await Recipe.find({ author: userId });
+        res.json(recipes);
+    } catch (error) {
+        console.error('Erreur lors de la récupération des recettes de l\'utilisateur:', error);
+        res.status(500).json({ message: 'Erreur lors de la récupération des recettes de l\'utilisateur' });
+    }
+};

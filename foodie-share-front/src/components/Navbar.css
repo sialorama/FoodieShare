@@ -1,16 +1,16 @@
 .navbar {
-    background-color: #333;
-    color: #fff;
+    background-color: #2c2f33; /* Couleur de fond plus douce */
+    color: #ffffff;
     padding: 15px 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombre subtile */
 }
 
 .navbar-logo {
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     margin-left: 15px;
 }
 
@@ -21,36 +21,39 @@
 }
 
 .navbar-link {
-    color: #fff;
-    font-size: 1.5rem;
-    padding: 8px 12px;
-    border-radius: 5px;
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 8px 15px;
+    border-radius: 8px;
     text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar-link:hover {
-    background-color: #555;
-    color: #c5f80d; /* Couleur survol */
+    background-color: #444b52; /* Couleur de fond survol plus claire */
+    color: #d4ed55; /* Couleur survol accentuée */
 }
 
 .active-link {
-    background-color: #ff6347;
-    color: #fff;
+    background-color: #7d9215; /* Couleur d'accentuation active */
+    color: #ffffff;
+    font-weight: bold;
+    border-bottom: 3px solid #d4ed55; /* Bordure pour indiquer la page active */
 }
 
 .navbar-logout-btn {
     background-color: #333532;
-    color: #fff;
-    font-size: 1.5rem;
-    padding: 8px 12px;
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 8px 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .navbar-logout-btn:hover {
-    background-color: #779214;
-    color: #fff;
+    background-color: #7a9d26; /* Couleur de survol plus vive */
+    color: #ffffff;
+    transform: scale(1.05); /* Effet de zoom au survol */
 }

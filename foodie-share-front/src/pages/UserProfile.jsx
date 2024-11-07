@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import './UserProfile.css';
 import AuthContext from '../auth/authContext';
 import axios from 'axios';
+import logo from '../assets/mesrecettes.jpg'
 
 function UserProfile() {
     const { user } = useContext(AuthContext);
@@ -34,9 +35,11 @@ function UserProfile() {
     return (
         <div className="user-profile">
             <div className="profile-info">
-                <h1>Hello {user.name}</h1>
+                <h1>Bonjour, {user.name} !</h1>
             </div>
-
+            <div className="submit-recipe-logo">
+                <img src={logo} alt="Logo" className="recipe-logo" />
+            </div>
             <div className="user-recipes">
                 <h2>Vos Recettes</h2>
                 {loading ? (
@@ -53,6 +56,12 @@ function UserProfile() {
                                 <p><strong>Description :</strong> {recipe.description}</p>
                                 <p><strong>Ingrédients :</strong> {recipe.ingredients.join(', ')}</p>
                                 <p><strong>Étapes :</strong> {recipe.steps.join('. ')}</p>
+                                <p><strong>Commentaires :</strong></p>
+                                <ul>
+                                    {recipe.comments.map((comment, index) => (
+                                        <li key={index}>{comment.message}</li>
+                                    ))}
+                                </ul>
                             </li>
                         ))}
                     </ul>
@@ -60,6 +69,7 @@ function UserProfile() {
             </div>
         </div>
     );
+    
 }
 
 export default UserProfile;

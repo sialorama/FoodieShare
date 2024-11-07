@@ -12,7 +12,6 @@
 
 .profile-info h1 {
   font-size: 2rem;
-  color: #95e614;
 }
 
 .user-recipes h2 {
@@ -30,13 +29,30 @@
   border: 1px solid #ddd;
   padding: 15px;
   margin-bottom: 15px;
-  border-radius: 5px;
+  border-radius: 18px;
+  transition: box-shadow 0.3s ease;
 }
 
 .recipe-item h3 {
   margin: 0 0 10px;
 }
 
+.recipe-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère au survol */
+}
+
 .error-message {
   color: red;
+  font-weight: bold;
+}
+
+.submit-recipe-logo {
+  text-align: center;  /* Centrer l'image horizontalement */
+  margin-bottom: 20px;  /* Ajouter un peu d'espace sous l'image */
+}
+
+.recipe-logo {
+  max-width: 100%;  /* L'image peut occuper toute la largeur disponible */
+  height: auto;     /* Maintient le ratio de l'image */
+  border-radius: 18px; 
 }

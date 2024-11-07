@@ -34,12 +34,12 @@
     cursor: pointer;
   }
   
-  .submit-recipe button:hover {
-    background-color: #2980b9;
-  }
-  
-  .body-img {
-    width: 580px;
-    height: 150px;
-    padding: 10px;
+  .submit-recipe-logo {
+    text-align: center;  /* Centrer l'image horizontalement */
+    margin-bottom: 20px;  /* Ajouter un peu d'espace sous l'image */
+}
+
+.recipe-logo {
+    max-width: 100%;  /* L'image peut occuper toute la largeur disponible */
+    height: auto;     /* Maintient le ratio de l'image */
 }
