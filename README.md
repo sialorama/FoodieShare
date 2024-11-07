@@ -25,13 +25,11 @@ Postman (facultatif, pour tester l'API)
 Cloner le projet :  
 
 ```plaintext
-Copier le code
 git clone https://github.com/username/FoodieShare.git
 cd FoodieShare
 Installer les dépendances du backend :
 ```
 ```plaintext
-Copier le code
 cd backend
 npm install
 Configurer les variables d'environnement :
@@ -39,29 +37,22 @@ Configurer les variables d'environnement :
 Créez un fichier .env dans le répertoire backend et ajoutez les variables d'environnement suivantes :  
 ```plaintext
 env
-Copier le code
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/foodie_share
 JWT_SECRET=votre_secret_pour_jwt
 ```
 ## Démarrer le backend :
-
 ```plaintext
-Copier le code
 npm start
 Installer les dépendances du frontend :
 ```
 Aller dans le répertoire frontend :
-
 ```plaintext
-Copier le code
 cd ../frontend
 npm install
 ```
 ## Démarrer le frontend :
-
 ```plaintext
-Copier le code
 npm run dev
 ```
 
