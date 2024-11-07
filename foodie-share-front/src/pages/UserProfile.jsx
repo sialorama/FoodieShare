@@ -3,12 +3,14 @@ import './UserProfile.css';
 import AuthContext from '../auth/authContext';
 import axios from 'axios';
 import logo from '../assets/mesrecettes.jpg'
+import { useNavigate } from 'react-router-dom';
 
 function UserProfile() {
     const { user } = useContext(AuthContext);
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchUserRecipes = async () => {
@@ -32,6 +34,21 @@ function UserProfile() {
         }
     }, [user]);
 
+    const handleDelete = async (recipeId) => {
+        try {
+            await axios.delete(`${import.meta.env.VITE_API_URL}/recipes/${recipeId}`, {
+                headers: {
+                    Authorization: `Bearer ${user.token}`
+                }
+            });
+    
+            setRecipes(recipes.filter(recipe => recipe._id !== recipeId));
+            navigate('/recipes');
+        } catch (error) {
+            console.error('Erreur lors de la suppression de la recette:', error);
+        }
+    };
+
     return (
         <div className="user-profile">
             <div className="profile-info">
@@ -46,7 +63,7 @@ function UserProfile() {
                 ) : error ? (
                     <p className="error-message">{error}</p>
                 ) : recipes.length === 0 ? (
-                    <p>Aucune recette trouvée.</p>
+                    <p>Vous n&apos;avez pas encore de recette.</p>
                 ) : (
                     <ul className="recipes-list">
                         {recipes.map(recipe => (
@@ -61,6 +78,11 @@ function UserProfile() {
                                         <li key={index}>{comment.message}</li>
                                     ))}
                                 </ul>
+                                
+                                {/* Bouton de suppression */}
+                                <button className="delete-btn" onClick={() => handleDelete(recipe._id)}>
+                                    Supprimer
+                                </button>
                             </li>
                         ))}
                     </ul>
@@ -68,7 +90,6 @@ function UserProfile() {
             </div>
         </div>
     );
-    
 }
 
 export default UserProfile;

@@ -53,18 +53,22 @@ exports.getRecipeById = async (req, res) => {
     }
 };
 
-// Supprimer une recette avec l'id
+// Supprimer une recette par son ID
 exports.deleteRecipeById = async (req, res) => {
     try {
         const { id } = req.params;
-        const deletedRecipe = await Recipe.findByIdAndDelete(id);
-        if (!deletedRecipe) {
-            return res.status(404).json({ message: 'Recette non trouvée' });
+
+        // Trouver et supprimer la recette
+        const recipe = await Recipe.findByIdAndDelete(id);
+
+        if (!recipe) {
+            return res.status(404).json({ message: 'Recette non trouvée.' });
         }
-        res.json({ message: 'Recette supprimée avec succès' });
+
+        return res.status(200).json({ message: 'Recette supprimée avec succès.' });
     } catch (error) {
-        console.error('Erreur lors de la suppression de la recette par ID:', error);
-        res.status(500).json({ message: 'Erreur serveur' });
+        console.error('Erreur lors de la suppression de la recette:', error);
+        return res.status(500).json({ message: 'Erreur interne du serveur.' });
     }
 };
 

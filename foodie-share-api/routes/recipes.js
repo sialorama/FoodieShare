@@ -6,7 +6,7 @@ const recipeController = require('../controllers/recipeController');
 router.get('/', recipeController.getAllRecipes); // Route pour GET /recipes
 router.get('/:id', recipeController.getRecipeById); // Route pour GET /recipes/:id
 router.post('/', recipeController.createRecipe); // Route pour POST /recipes
-router.delete('/:id', recipeController.deleteRecipeById); // Route pour DELETE /recipes/:id
 router.get('/user/:userId', recipeController.getRecipesByUser); // Route pour GET /recipes/user/:userId
+router.delete('/:id', recipeController.deleteRecipeById); // Route pour DELETE /recipes/:id
 
 module.exports = router;

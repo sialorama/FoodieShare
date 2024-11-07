@@ -36,7 +36,7 @@
 }
 
 .auth-form input:focus {
-  border-color: #27ae60; /* Vert pour le formulaire d'inscription */
+  border-color: #27ae60;
   box-shadow: 0 0 5px rgba(39, 174, 96, 0.4);
   outline: none;
 }

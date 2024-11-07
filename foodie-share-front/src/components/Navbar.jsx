@@ -14,8 +14,6 @@ function Navbar() {
 
     return (
         <nav className="navbar">
-            <div className="navbar-logo-section">
-            </div>
             <div className="navbar-links">
                 <NavLink 
                     exact 

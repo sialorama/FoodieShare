@@ -11,6 +11,8 @@ import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import AuthProvider from './auth/authProvider';
 import Footer from './components/Footer';
+import 'font-awesome/css/font-awesome.min.css';
+
 
 function App() {
     return (
