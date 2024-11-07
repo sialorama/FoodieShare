@@ -1,59 +1,57 @@
 .navbar {
-    background-color: #2c2f33; /* Couleur de fond plus douce */
-    color: #ffffff;
+    background-color: #2c2f33;
     padding: 15px 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombre subtile */
-}
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 
-.navbar-logo {
-    width: 50px;
-    height: 50px;
-    margin-left: 15px;
-}
+    .navbar-logo {
+        width: 50px;
+        height: 50px;
+        margin-left: 15px;
+    }
 
-.navbar-links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
+    .navbar-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
 
-.navbar-link {
-    color: #ffffff;
-    font-size: 1.2rem;
-    padding: 8px 15px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
+    .navbar-link {
+        color: #ffffff;
+        font-size: 1.2rem;
+        padding: 8px 15px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-.navbar-link:hover {
-    background-color: #444b52; /* Couleur de fond survol plus claire */
-    color: #d4ed55; /* Couleur survol accentuée */
-}
+    .navbar-link:hover {
+        background-color: #444b52;
+        color: #d4ed55;
+    }
 
-.active-link {
-    background-color: #7d9215; /* Couleur d'accentuation active */
-    color: #ffffff;
-    font-weight: bold;
-    border-bottom: 3px solid #d4ed55; /* Bordure pour indiquer la page active */
-}
+    .active-link {
+        background-color: #7d9215;
+        color: #ffffff;
+        font-weight: bold;
+        border-bottom: 3px solid #d4ed55;
 
-.navbar-logout-btn {
-    background-color: #333532;
-    color: #ffffff;
-    font-size: 1.2rem;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
+        .navbar-logout-btn {
+            background-color: #333532;
+            color: #ffffff;
+            font-size: 1.2rem;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
 
-.navbar-logout-btn:hover {
-    background-color: #7a9d26; /* Couleur de survol plus vive */
-    color: #ffffff;
-    transform: scale(1.05); /* Effet de zoom au survol */
+        .navbar-logout-btn:hover {
+            background-color: #7a9d26;
+            transform: scale(1.05);
+        }
+    }
 }

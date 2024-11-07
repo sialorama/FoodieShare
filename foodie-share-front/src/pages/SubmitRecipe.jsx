@@ -130,11 +130,10 @@ function SubmitRecipe() {
                 required
             />
 
-            {/* Commentaire de la recette */}
             <TextAreaField
                 name="comments"
                 placeholder="Ajouter un commentaire (facultatif)"
-                value={formData.comments.map(comment => comment.message).join(' ')} // Afficher le commentaire
+                value={formData.comments.map(comment => comment.message).join(' ')} 
                 onChange={handleCommentChange}
             />
 

@@ -41,7 +41,6 @@ function UserProfile() {
                 <img src={logo} alt="Logo" className="recipe-logo" />
             </div>
             <div className="user-recipes">
-                <h2>Vos Recettes</h2>
                 {loading ? (
                     <p>Chargement des recettes...</p>
                 ) : error ? (

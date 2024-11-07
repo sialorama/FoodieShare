@@ -1,45 +1,51 @@
-/* SubmitRecipe.css */
-
 .submit-recipe {
-    width: 100%;
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 30px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-  }
+  width: 100%;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+.submit-recipe h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.submit-recipe h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.submit-recipe input,
+.submit-recipe textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 10;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.submit-recipe button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-recipe-logo {
+  text-align: center;
+  margin-bottom: 20px;
   
-  .submit-recipe h2 {
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .submit-recipe input, .submit-recipe textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 10;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .submit-recipe button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .submit-recipe-logo {
-    text-align: center;  /* Centrer l'image horizontalement */
-    margin-bottom: 20px;  /* Ajouter un peu d'espace sous l'image */
 }
 
 .recipe-logo {
-    max-width: 100%;  /* L'image peut occuper toute la largeur disponible */
-    height: auto;     /* Maintient le ratio de l'image */
+  max-width: 100%;
+    height: auto;
+  
 }

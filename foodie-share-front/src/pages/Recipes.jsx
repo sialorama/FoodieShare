@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './Recipes.css'
+import './Recipes.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import logo from '../imgs/cookbook.webp';
@@ -15,17 +15,21 @@ function Recipes() {
 
     return (
         <div className="recipes">
-            <h1>Recipes</h1>
-            <ul>
+            <h1>Nos Recettes</h1>
+            <div className="recipe-list">
                 {recipes.map(recipe => (
-                    <li key={recipe._id}>
-                        <Link to={`/recipes/${recipe._id}`}>{recipe.title}</Link>
-                    </li>
+                    <div className="recipe-card" key={recipe._id}>
+                        <Link to={`/recipes/${recipe._id}`} className="recipe-link">
+                            <img src={recipe.imageUrl || logo} alt={recipe.title} className="recipe-image" />
+                            <h2 className="recipe-title">{recipe.title}</h2>
+                            <p className="recipe-description">{recipe.description}</p>
+                        </Link>
+                    </div>
                 ))}
-            </ul>
-            <ul>
-            <img src={logo} alt="Cookbook" />
-            </ul>
+            </div>
+            <div className="logo-section">
+                <img src={logo} alt="Cookbook" className="logo-img" />
+            </div>
         </div>
     );
 }

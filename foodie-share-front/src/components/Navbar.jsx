@@ -15,7 +15,6 @@ function Navbar() {
     return (
         <nav className="navbar">
             <div className="navbar-logo-section">
-                {/* Ajoutez votre logo ici */}
             </div>
             <div className="navbar-links">
                 <NavLink 
@@ -23,13 +22,13 @@ function Navbar() {
                     to="/" 
                     className={({ isActive }) => isActive ? "navbar-link active-link" : "navbar-link"}
                 >
-                    Home
+                    Accueil
                 </NavLink>
                 <NavLink 
                     to="/recipes" 
                     className={({ isActive }) => isActive ? "navbar-link active-link" : "navbar-link"}
                 >
-                    Recipes
+                    Recettes
                 </NavLink>
                 {user ? (
                     <>
@@ -37,17 +36,21 @@ function Navbar() {
                             to="/submit-recipe" 
                             className={({ isActive }) => isActive ? "navbar-link active-link" : "navbar-link"}
                         >
-                            Submit Recipe
+                            Ajouter une recette
                         </NavLink>
                         <NavLink 
                             to="/profile" 
                             className={({ isActive }) => isActive ? "navbar-link active-link" : "navbar-link"}
                         >
-                            Profile
+                            Mes recettes
                         </NavLink>
-                        <button className="navbar-logout-btn" onClick={handleLogout}>
-                            Logout
-                        </button>
+                        <NavLink 
+                            to="#" 
+                            onClick={handleLogout} 
+                            className="navbar-link"
+                        >
+                            Déconnexion
+                        </NavLink>
                     </>
                 ) : (
                     <>
@@ -55,13 +58,13 @@ function Navbar() {
                             to="/login" 
                             className={({ isActive }) => isActive ? "navbar-link active-link" : "navbar-link"}
                         >
-                            Login
+                            Connexion
                         </NavLink>
                         <NavLink 
                             to="/register" 
                             className={({ isActive }) => isActive ? "navbar-link active-link" : "navbar-link"}
                         >
-                            Register
+                            S&apos;enregistrer
                         </NavLink>
                     </>
                 )}
