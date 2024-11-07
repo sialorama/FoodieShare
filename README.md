@@ -32,21 +32,21 @@ Installer les dépendances du backend :
 cd foodie-share-api
 npm install
 ```
-Configurer les variables d'environnement :
+Configurer les variables d'environnement :  
 
-Créez un fichier .env dans le répertoire backend et ajoutez les variables d'environnement suivantes :  
+Créez un fichier .env dans le répertoire backend et ajoutez les variables d'environnement suivantes :   
 ```plaintext
 env:  
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/foodie_share
 JWT_SECRET=<votre_secret_pour_jwt> (example: e6a8b7c8e3bb41d1a4a22cba9f8301f7d75edb2cf8a2a20a111b10b0e9ecb1e9b7f1d25419f40d6db8f0191ecbba7382)
 ```
-### Démarrer le backend :
+### Démarrer le backend :  
 ```plaintext
 npm start
 ```
-### Installer les dépendances du frontend :
-Aller dans le répertoire frontend :
+### Installer les dépendances du frontend :  
+Aller dans le répertoire frontend :  
 ```plaintext
 cd ../foodie-share-front
 npm install
@@ -58,15 +58,14 @@ npm start
 
 ## Utilisation  
 
-Exemple de requête POST avec Postman pour soumettre une recette
-Ouvrez Postman et créez une nouvelle requête.
+Exemple de requête POST avec Postman pour soumettre une recette  
+Ouvrez Postman et créez une nouvelle requête.  
+  
+Sélectionnez la méthode POST et entrez l'URL suivante : http://localhost:5000/recipes.  
+  
+Ajoutez le JSON suivant dans le "Body" (sélectionnez raw et JSON comme format) :  
 
-Sélectionnez la méthode POST et entrez l'URL suivante : http://localhost:5000/recipes.
-
-Ajoutez le JSON suivant dans le "Body" (sélectionnez raw et JSON comme format) :
-
-json
-Copier le code
+```plaintext
 {
     "title": "Salade César",
     "description": "Une salade savoureuse avec du poulet grillé et de la sauce César.",
@@ -76,6 +75,7 @@ Copier le code
 }
 
 Envoyez la requête et vérifiez la réponse. Vous devriez recevoir un statut 201 Created avec la recette créée.
+```
 
 ## Routes de l'API :  
 ```
@@ -87,14 +87,13 @@ GET /recipes/user/:userId : Récupère toutes les recettes d'un utilisateur
 ```
 ## Scripts utiles
 Démarrer le serveur :
-
-bash
+```plaintext
 npm start
-
+```
 ## Démarrer le serveur en mode développement :  
-
-bash  
+```plaintext
 npm run dev  
+```
 
 ## Contribution  
 Les contributions sont les bienvenues ! Veuillez ouvrir une issue avant de soumettre une pull request pour discuter des changements proposés.  
