@@ -30,7 +30,7 @@ La solution doit être moderne, réactive et simple d’utilisation.
       "Verser dans un moule et cuire au four pendant 30 minutes.",
       "Laisser refroidir avant de servir."
   ],
-  "author": "672c971a6ea3fa6500f11589"  // Remplacez ceci par l'ID réel de l'utilisateur créé
+  "author": "672c971a6ea3fa6500f11589"
 }
 
 ```
