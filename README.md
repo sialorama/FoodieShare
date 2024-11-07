@@ -19,7 +19,6 @@ La solution doit être moderne, réactive et simple d’utilisation.
 ## Tester l'ajout de recette avec postman:
 
 ```plaintext
-```JSON
 {
  "title": "Gâteau au chocolat",
     "description": "Un gâteau riche et moelleux au chocolat.",
@@ -33,9 +32,5 @@ La solution doit être moderne, réactive et simple d’utilisation.
   ],
   "author": "672c971a6ea3fa6500f11589"  // Remplacez ceci par l'ID réel de l'utilisateur créé
 }
-```
-```
-
-```plaintext
 
 ```
