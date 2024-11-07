@@ -5,7 +5,7 @@ docker ps  -a
 docker rm <containerId>
 
 
-Ports commands:
+Libérer le port 3000:
 
 netstat -aon | findstr :3000
 taskkill /PID <PID> /F
