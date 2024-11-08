@@ -1,0 +1,66 @@
+Structure du dossier pour le volume Windows
+Le num‚ro de s‚rie du volume est 60D2-FFED
+C:.
+³   App.css
+³   App.jsx
+³   index.css
+³   main.jsx
+³   tree.front.txt
+³   
+ÃÄÄÄassets
+³       FoodieShareLogo.ico
+³       mesrecettes.jpg
+³       
+ÃÄÄÄauth
+³       authContext.jsx
+³       authProvider.jsx
+³       
+ÃÄÄÄcomponents
+³       Footer.css
+³       Footer.jsx
+³       Navbar.css
+³       Navbar.jsx
+³       PrivateRoute.jsx
+³       
+ÃÄÄÄimgs
+³   ³   cookbook.webp
+³   ³   FoodieShare.webp
+³   ³   FoodieShareLogo.ico
+³   ³   foodieShareWide.png
+³   ³   Impact_Map.svg
+³   ³   recettes.webp
+³   ³   submitRecipe.png
+³   ³   
+³   ÀÄÄÄicons
+³           email.svg
+³           facebook.svg
+³           instagram.svg
+³           instagram.svg00
+³           x-blue.svg
+³           youtube.svg
+³           
+ÃÄÄÄpages
+³       Home.css
+³       Home.jsx
+³       Login.css
+³       Login.jsx
+³       NotFound.css
+³       NotFound.jsx
+³       RecipeDetail.css
+³       RecipeDetail.jsx
+³       Recipes.css
+³       Recipes.jsx
+³       Register.css
+³       Register.jsx
+³       SubmitRecipe.css
+³       SubmitRecipe.jsx
+³       UserProfile.css
+³       UserProfile.jsx
+³       
+ÃÄÄÄtests
+³       recipe.test.jsx
+³       submitRecipe.test.jsx
+³       
+ÀÄÄÄutils
+        api.js
+        
