@@ -1,4 +1,4 @@
-![logo](./foodie-share-front/src/imgs/foodieShareWide.png)
+![logo](./front/src/imgs/foodieShareWide.png)
 
 **Projet :** Plateforme de partage de recettes en ligne  
 **Client :** Startup fictive **FoodieShare**  
@@ -22,17 +22,17 @@ MongoDB (configuré et en cours d'exécution)
 Postman (facultatif, pour tester l'API)  
 
 ## Installation  
-Cloner le projet :  
+#### Cloner le projet :  
 ```plaintext
 git clone https://github.com/username/FoodieShare.git
 cd FoodieShare
 ```
-Installer les dépendances du backend :  
+#### Installer les dépendances du backend :  
 ```plaintext
 cd api
 npm install
 ```
-Configurer les variables d'environnement :  
+#### Configurer les variables d'environnement :  
 
 Créez un fichier .env dans le répertoire backend et ajoutez les variables d'environnement suivantes :   
 ```plaintext
@@ -42,10 +42,18 @@ MONGO_URI=mongodb://localhost:27017/foodieshare
 JWT_SECRET=<votre_secret_pour_jwt> (example: e6a8b7c8e3bb41d1a4a22cba9f8301f7d75edb2cf8a2a20a111b10b0e9ecb1e9b7f1d25419f40d6db8f0191ecbba7382)
 ```
 ### Démarrer le backend :  
+
+#### Démarrer Docker et créer le container du back:
+
+```plaintext
+cd api
+docker-compose up --build -d
+```
+
 ```plaintext
 npm start
 ```
-### Installer les dépendances du frontend :  
+#### Installer les dépendances du frontend :  
 Aller dans le répertoire frontend :  
 ```plaintext
 cd front
@@ -56,7 +64,7 @@ npm install
 npm start
 ```
 
-## Utilisation  
+### Utilisation  
 
 Exemple de requête POST avec Postman pour soumettre une recette  
 Ouvrez Postman et créez une nouvelle requête.  
@@ -77,7 +85,7 @@ Ajoutez le JSON suivant dans le "Body" (sélectionnez raw et JSON comme format) 
 Envoyez la requête et vérifiez la réponse. Vous devriez recevoir un statut 201 Created avec la recette créée.
 ```
 
-## Routes de l'API :  
+### Routes de l'API :  
 ```
 POST /recipes : Crée une nouvelle recette
 GET /recipes : Récupère toutes les recettes
@@ -85,16 +93,22 @@ GET /recipes/:id : Récupère une recette spécifique par ID
 DELETE /recipes/:id : Supprime une recette par ID
 GET /recipes/user/:userId : Récupère toutes les recettes d'un utilisateur
 ```
-## Scripts utiles
+
+### Routes dans postman :
+
+```plaintext
+POST http://localhost:5000/users/register: Crée une nouvelle recette
+GET http://localhost:5000/recipes : Récupère toutes les recettes
+GET http://localhost:5000/recipes/{recipeId} : Récupère une recette spécifique par ID
+DELETE http://localhost:5000/recipes/{RecipeId} : Supprime une recette par ID
+GET http://localhost:5000/recipes/user/{userId}: Récupère toutes les recettes d'un utilisateur
+```
+
+### Scripts utiles
 Démarrer le serveur :
 ```plaintext
 npm start
 ```
-## Démarrer le serveur en mode développement :  
-```plaintext
-npm run dev  
-```
-
 ## Contribution  
 Les contributions sont les bienvenues ! Veuillez ouvrir une issue avant de soumettre une pull request pour discuter des changements proposés.  
   
