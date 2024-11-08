@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const supertest = require('supertest');
-const app = require('../server'); // Assure-toi que 'app' est exporté dans server.js
-const Recipe = require('../models/Recipe');
-const User = require('../models/User');
+const app = require('../../../api/server'); // Assure-toi que 'app' est exporté dans server.js
+const Recipe = require('../../../api/models/recipe');
+const User = require('../../../api/models/user');
 
 // Utilise Supertest pour faire des requêtes
 const request = supertest(app);

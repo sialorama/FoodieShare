@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import SubmitRecipe from '../pages/SubmitRecipe'; // Assurez-vous que le chemin est correct
+import SubmitRecipe from '../pages/SubmitRecipe';
 import { BrowserRouter } from 'react-router-dom';
 
 describe('SubmitRecipe Component', () => {
