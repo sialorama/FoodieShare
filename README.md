@@ -29,7 +29,7 @@ cd FoodieShare
 ```
 Installer les dépendances du backend :  
 ```plaintext
-cd foodie-share-api
+cd api
 npm install
 ```
 Configurer les variables d'environnement :  
@@ -38,7 +38,7 @@ Créez un fichier .env dans le répertoire backend et ajoutez les variables d'en
 ```plaintext
 env:  
 PORT=5000
-MONGO_URI=mongodb://localhost:27017/foodie_share
+MONGO_URI=mongodb://localhost:27017/foodieshare
 JWT_SECRET=<votre_secret_pour_jwt> (example: e6a8b7c8e3bb41d1a4a22cba9f8301f7d75edb2cf8a2a20a111b10b0e9ecb1e9b7f1d25419f40d6db8f0191ecbba7382)
 ```
 ### Démarrer le backend :  
@@ -48,7 +48,7 @@ npm start
 ### Installer les dépendances du frontend :  
 Aller dans le répertoire frontend :  
 ```plaintext
-cd ../foodie-share-front
+cd front
 npm install
 ```
 ### Démarrer le frontend :

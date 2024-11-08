@@ -20,7 +20,7 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
-    container_name: foodie-share-api
+    container_name: api
     environment:
       NODE_ENV: ${NODE_ENV}
       NODE_PORT: ${NODE_PORT}

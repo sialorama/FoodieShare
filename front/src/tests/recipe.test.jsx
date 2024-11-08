@@ -1,62 +1,92 @@
-import { render, screen, waitFor, cleanup } from '@testing-library/react';
-import axios from 'axios';
-import Recipes from '../pages/Recipes';
+const mongoose = require('mongoose');
+const supertest = require('supertest');
+const app = require('../server'); // Assure-toi que 'app' est exporté dans server.js
+const Recipe = require('../models/Recipe');
+const User = require('../models/User');
 
-jest.mock('axios');
+// Utilise Supertest pour faire des requêtes
+const request = supertest(app);
 
-describe('Recipes Component', () => {
-    // Sample data for successful response
-    const recipesData = [
-        {
-            _id: '1',
-            title: 'Recipe One',
-            description: 'Description for Recipe One',
-            ingredients: ['Ingredient 1', 'Ingredient 2'],
-            steps: ['Step 1', 'Step 2'],
-        },
-        {
-            _id: '2',
-            title: 'Recipe Two',
-            description: 'Description for Recipe Two',
-            ingredients: ['Ingredient A', 'Ingredient B'],
-            steps: ['Step A', 'Step B'],
-        },
-    ];
+// Configuration pour Jest
+beforeAll(async () => {
+    await mongoose.connect('mongodb://localhost:27017/test', {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    });
+});
 
-    // Clean up after each test to avoid test interference
-    afterEach(() => {
-        cleanup();
-        jest.clearAllMocks();
+afterAll(async () => {
+    await mongoose.connection.close();
+});
+
+describe('Recipe and User Tests', () => {
+    let user;
+    let token;
+
+    beforeEach(async () => {
+        // Créer un utilisateur fictif pour les tests
+        user = new User({
+            name: 'Test User',
+            email: 'test@example.com',
+            password: 'password'
+        });
+        await user.save();
+
+        // Simule un token d'authentification
+        token = 'someauthtoken'; // Remplace par un vrai token si authentification JWT
     });
 
-    it('should render the recipes when API call is successful', async () => {
-        // Mock successful response from axios
-        axios.get.mockResolvedValue({ data: recipesData });
-
-        // Render the Recipes component
-        render(<Recipes />);
-
-        // Check if recipe titles are displayed
-        await waitFor(() => {
-            expect(screen.getByText('Recipe One')).toBeInTheDocument();
-            expect(screen.getByText('Recipe Two')).toBeInTheDocument();
-        });
-
-        // Check if recipe descriptions are displayed
-        expect(screen.getByText('Description for Recipe One')).toBeInTheDocument();
-        expect(screen.getByText('Description for Recipe Two')).toBeInTheDocument();
+    afterEach(async () => {
+        await User.deleteMany({});
+        await Recipe.deleteMany({});
     });
 
-    it('should display an error message when API call fails', async () => {
-        // Mock failed response from axios
-        axios.get.mockRejectedValue(new Error('Error fetching recipes'));
+    it('Crée une recette et l\'associe à un utilisateur', async () => {
+        const newRecipe = {
+            title: 'Salade César',
+            description: 'Délicieuse salade avec poulet et parmesan',
+            ingredients: ['Laitue', 'Poulet', 'Parmesan', 'Croutons'],
+            steps: ['Laver la laitue', 'Faire griller le poulet', 'Mélanger les ingrédients']
+        };
 
-        // Render the Recipes component
-        render(<Recipes />);
+        const response = await request
+            .post('/recipes')
+            .send(newRecipe)
+            .set('Authorization', `Bearer ${token}`);
 
-        // Check if error message is displayed
-        await waitFor(() => {
-            expect(screen.getByText('Erreur lors du chargement des recettes')).toBeInTheDocument();
+        // Vérifier le statut et les données retournées
+        expect(response.status).toBe(201);
+        expect(response.body).toHaveProperty('_id');
+        expect(response.body.author).toBe(user._id.toString());
+    });
+
+    it('Récupère les recettes d\'un utilisateur spécifique', async () => {
+        const recipe1 = new Recipe({
+            title: 'Salade César',
+            description: 'Délicieuse salade',
+            ingredients: ['Laitue', 'Poulet', 'Parmesan'],
+            steps: ['Laver la laitue', 'Mélanger'],
+            author: user._id
         });
+
+        const recipe2 = new Recipe({
+            title: 'Gâteau au Chocolat',
+            description: 'Moelleux et savoureux',
+            ingredients: ['Chocolat', 'Farine', 'Sucre'],
+            steps: ['Mélanger', 'Cuire'],
+            author: user._id
+        });
+
+        await recipe1.save();
+        await recipe2.save();
+
+        const response = await request
+            .get(`/recipes/user/${user._id}`)
+            .set('Authorization', `Bearer ${token}`);
+
+        expect(response.status).toBe(200);
+        expect(response.body.length).toBe(2);
+        expect(response.body[0].title).toBe('Salade César');
+        expect(response.body[1].title).toBe('Gâteau au Chocolat');
     });
 });
