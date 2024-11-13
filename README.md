@@ -64,7 +64,12 @@ npm install
 npm start
 ```
 
-### Utilisation  
+### Utilisation dans Postman
+
+#### La collection des différents endpoints est accessible ici:  
+ ```
+[https://elements.getpostman.com/redirect?entityId=36416744-0f36ec23-f80a-4a6f-aa68-3c171d873262&entityType=collection](https://elements.getpostman.com/redirect?entityId=36416744-0702c308-4b7e-409e-9f65-a3f0d8ffea60&entityType=collection)
+ ```
 
 Exemple de requête POST avec Postman pour soumettre une recette  
 Ouvrez Postman et créez une nouvelle requête.  
