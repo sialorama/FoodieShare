@@ -68,7 +68,7 @@ npm start
 
 #### La collection des différents endpoints est accessible ici:  
  ```
-https://red-space-340500.postman.co/workspace/ECF3~eef696ef-9e60-4af2-94e3-d587b0669ddb/collection/36416744-0702c308-4b7e-409e-9f65-a3f0d8ffea60?action=share&creator=36416744
+https://elements.getpostman.com/redirect?entityId=36416744-0702c308-4b7e-409e-9f65-a3f0d8ffea60&entityType=collection
  ```
 
 Exemple de requête POST avec Postman pour soumettre une recette  
